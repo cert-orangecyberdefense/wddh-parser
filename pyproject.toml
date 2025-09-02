@@ -56,3 +56,32 @@ docstring-code-format = true
 files = ["src"]
 mypy_path = 'src'
 
+[tool.tox]
+requires = ["tox>=4.26"]
+env_list = ["lint", "3.10", "3.11", "3.12", "3.13"]
+
+[tool.tox.env_run_base]
+description = "Run test under {base_python}"
+#usedevelop = true
+commands = [["pytest"]]
+deps = ["pytest"]
+
+
+[tool.tox.env.format]
+skip_install = true
+description = "format"
+commands = [["ruff", "format",  "src", "tests"],  ["ruff", "check", "--fix",  "src", "tests"]]
+deps = ["ruff==0.12.11"]
+
+
+[tool.tox.env.lint]
+skip_install = true
+description = "format"
+commands = [["ruff", "check", "src"], ["ruff", "format", "--check", "src"]]
+deps = ["ruff==0.12.11"]
+
+[tool.tox.gh.python]
+"3.13" = ["3.13"]
+"3.12" = ["3.12"]
+"3.11" = ["3.11"]
+"3.10" = ["3.10"]

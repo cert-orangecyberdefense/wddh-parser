@@ -20,7 +20,7 @@ def gen_argparse() -> argparse.ArgumentParser:
     :return:
     """
     parser = argparse.ArgumentParser(
-        description="Parser for Windows Defender Detection history (files located under \ProgramData\Microsoft\Windows Defender\Scans\History\Service\DetectionHistory\)"
+        description="Parser for Windows Defender Detection history artifact (files located under \ProgramData\Microsoft\Windows Defender\Scans\History\Service\DetectionHistory\)"
     )
     # * pour plusieur fichier
     parser.add_argument(

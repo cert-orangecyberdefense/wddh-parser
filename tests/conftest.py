@@ -16,7 +16,7 @@ def open_file(file: Path, mode: str = "rb") -> Iterator[BinaryIO]:
 
 @pytest.fixture
 def wddh_mimikatz() -> Iterator[BinaryIO]:
-    yield from open_file(base_path() / "data"/"94BBE9CF-CDEB-4885-9178-CC93FB10822D")
+    yield from open_file(base_path() / "data" / "94BBE9CF-CDEB-4885-9178-CC93FB10822D")
 
 
 @pytest.fixture(
