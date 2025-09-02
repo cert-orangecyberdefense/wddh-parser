@@ -1,0 +1,58 @@
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "wddh"
+version = "1.0"
+description = "Parser for Windows Defender Detection history"
+authors = [{name = "Billaud William", email = "william.billaud@orange.com"}]
+license = "Apache License 2.0"
+license-file = ["LICENSE"]
+readme = "README.md"
+requires-python = "<4.0,>=3.10"
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Information Technology",
+  "License :: OSI Approved",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Information Analysis",
+  "Topic :: Security",
+  "Topic :: Utilities",
+]
+
+
+[project.urls]
+Homepage = "https://github.com/cert-orangecyberdefense/wddh-parser"
+Repository = "https://github.com/cert-orangecyberdefense/wddh-parser.git"
+Issues = "https://github.com/cert-orangecyberdefense/wddh-parser/issues"
+Changelog = "https://github.com/cert-orangecyberdefense/wddh-parser/blob/master/CHANGELOG.md"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^6.0.0"
+
+
+[tool.poetry.scripts]
+wddh = "wddh.cli:main"
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+known_first_party = ["wddh"]
+src_paths = ["wddh"]
+
+[tool.flake8]
+max-line-length = 120
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.mypy]
+files = ["src"]
+mypy_path = 'src'
+
