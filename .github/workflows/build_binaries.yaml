@@ -32,5 +32,5 @@ jobs:
       if: runner.os != 'windows'
       uses: actions/upload-artifact@v4
       with:
-        name: nxc-${{ matrix.os }}
+        name: wddh-${{ matrix.os }}
         path: dist/wddh
