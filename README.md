@@ -201,3 +201,4 @@ The following projects contain information related to this artifact :
 * <https://github.com/log2timeline/plaso/blob/main/plaso/parsers/windefender_history.py>
 * <https://github.com/libyal/dtformats/blob/main/documentation/Windows%20Defender%20scan%20DetectionHistory%20file%20format.asciidoc>
 * <https://github.com/jklepsercyber/defender-detectionhistory-parser>
+* <https://www.orangecyberdefense.com/global/blog/cybersecurity/digging-into-windows-defender-detection-history-wddh>
