@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "wddh"
-version = "1.0.0"
+version = "1.0.1"
 description = "Parser for Windows Defender Detection history"
 authors = [{name = "Billaud William", email = "william.billaud@orange.com"}]
 license = "Apache License 2.0"
@@ -58,7 +58,7 @@ mypy_path = 'src'
 
 [tool.tox]
 requires = ["tox>=4.26"]
-env_list = ["lint", "3.10", "3.11", "3.12", "3.13"]
+env_list = ["lint", "3.10", "3.11", "3.12", "3.13", "3.14"]
 
 [tool.tox.env_run_base]
 description = "Run test under {base_python}"
@@ -71,16 +71,17 @@ deps = ["pytest"]
 skip_install = true
 description = "format"
 commands = [["ruff", "format",  "src", "tests"],  ["ruff", "check", "--fix",  "src", "tests"]]
-deps = ["ruff==0.12.11"]
+deps = ["ruff==0.14.6"]
 
 
 [tool.tox.env.lint]
 skip_install = true
 description = "format"
 commands = [["ruff", "check", "src"], ["ruff", "format", "--check", "src"]]
-deps = ["ruff==0.12.11"]
+deps = ["ruff==0.14.6"]
 
 [tool.tox.gh.python]
+"3.14" = ["3.14"]
 "3.13" = ["3.13"]
 "3.12" = ["3.12"]
 "3.11" = ["3.11"]

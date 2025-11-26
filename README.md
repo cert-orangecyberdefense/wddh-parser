@@ -14,11 +14,18 @@ Further information regarding format is located in the file [doc.md](./doc.md).
 
 ```commandline
 pip install wddh
+```
+
+```commandline
 # Local install
-git clone <>
+git clone https://github.com/cert-orangecyberdefense/wddh-parser.git
 cd wddh 
 pip install .
+# or using uv
+uv run wddh
 ```
+
+Pre compiled binaries are also available in the release section https://github.com/cert-orangecyberdefense/wddh-parser/releases
 
 ## Usage
 
