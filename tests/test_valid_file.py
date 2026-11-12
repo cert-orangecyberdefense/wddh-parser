@@ -7,11 +7,11 @@ from wddh.ltv_reader import TLVTypeEnum
 from wddh.mp_threat_dectection_enum import ThreatStatusID
 from wddh.wddh_clean import WDDHClean
 from wddh.wddh_part import (
-    WDDHHeader,
     WDDHFlags,
+    WDDHFooter,
+    WDDHHeader,
     WDDHInformation,
     WDDHMetadata,
-    WDDHFooter,
     WDDHMetadata2,
 )
 

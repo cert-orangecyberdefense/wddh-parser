@@ -1,6 +1,6 @@
 import logging
 from functools import reduce
-from typing import BinaryIO, Optional
+from typing import BinaryIO
 
 from wddh.wddh_part import (
     WDDHFlags,
@@ -21,7 +21,7 @@ class WDDHClean(WDDHPart):
     THis class is used to parse a windows defender detection History in the cleaniest way possible and will fail if file is incomplete or corrupted
     """
 
-    def __init__(self, fh: BinaryIO, offset: Optional[int] = None):
+    def __init__(self, fh: BinaryIO, offset: int | None = None):
         if offset:
             fh.seek(offset)
         logger.debug("Processing header at offset 0x%x", fh.tell())
@@ -63,6 +63,6 @@ class WDDHClean(WDDHPart):
                 f"{r.ressource_type} {r.ressource_location}" for r in self.alert_details
             ],
             "misc": reduce(
-                lambda a, b: dict(a, **b), list(x.blob for x in self.alert_details), {}
+                lambda a, b: dict(a, **b), [x.blob for x in self.alert_details], {}
             ),
         }

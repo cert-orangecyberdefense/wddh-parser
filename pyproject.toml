@@ -52,35 +52,41 @@ max-line-length = 120
 [tool.ruff.format]
 docstring-code-format = true
 
+[tool.ruff.lint]
+
+ignore = ["C400", "BLE001"]
+
 [tool.mypy]
 files = ["src"]
 mypy_path = 'src'
 
 [tool.tox]
-requires = ["tox>=4.26"]
-env_list = ["lint", "3.10", "3.11", "3.12", "3.13", "3.14"]
+requires = ["tox>=4.65"]
+env_list = ["lint", "3.10", "3.11", "3.12", "3.13", "3.14", "3.15"]
 
 [tool.tox.env_run_base]
 description = "Run test under {base_python}"
 #usedevelop = true
 commands = [["pytest"]]
 deps = ["pytest"]
-
+# Required, otherwise faile test for python 3.15
+#recreate = true
 
 [tool.tox.env.format]
 skip_install = true
 description = "format"
 commands = [["ruff", "format",  "src", "tests"],  ["ruff", "check", "--fix",  "src", "tests"]]
-deps = ["ruff==0.14.6"]
+deps = ["ruff==0.17.5"]
 
 
 [tool.tox.env.lint]
 skip_install = true
 description = "format"
 commands = [["ruff", "check", "src"], ["ruff", "format", "--check", "src"]]
-deps = ["ruff==0.14.6"]
+deps = ["ruff==0.17.5"]
 
 [tool.tox.gh.python]
+"3.15" = ["3.15"]
 "3.14" = ["3.14"]
 "3.13" = ["3.13"]
 "3.12" = ["3.12"]

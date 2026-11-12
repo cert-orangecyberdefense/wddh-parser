@@ -6,7 +6,7 @@ import collections
 import json
 import logging
 from abc import ABC
-from typing import TYPE_CHECKING, BinaryIO
+from typing import BinaryIO
 
 from wddh.ltv_reader import (
     BlobEntry,
@@ -19,9 +19,6 @@ from wddh.ltv_reader import (
     WStrEntry,
 )
 from wddh.mp_threat_dectection_enum import ThreatStatusID
-
-if TYPE_CHECKING:
-    pass
 
 logger = logging.getLogger(__name__)
 
@@ -45,7 +42,6 @@ class WDDHPart(collections.abc.Mapping, ABC):
 
 class WDDHHeader(WDDHPart):
     def __init__(self, fh: BinaryIO, offset: int = 0):
-        fh = fh
         if offset:
             fh.seek(offset)
         self.threat_id = U64Entry(fh).as_u64
@@ -66,7 +62,6 @@ class WDDHHeader(WDDHPart):
 
 class WDDHFlags(WDDHPart):
     def __init__(self, fh: BinaryIO, offset: int = 0):
-        fh = fh
         if offset:
             fh.seek(offset)
 
@@ -86,7 +81,6 @@ class WDDHFlags(WDDHPart):
 
 class WDDHInformation(WDDHPart):
     def __init__(self, fh: BinaryIO, offset: int = 0):
-        fh = fh
         if offset:
             fh.seek(offset)
         self.magic_version = WStrEntry(fh).as_str
@@ -99,7 +93,6 @@ class WDDHInformation(WDDHPart):
 
 class WDDHMetadata(WDDHPart):
     def __init__(self, fh: BinaryIO, offset: int = 0):
-        fh = fh
         if offset:
             fh.seek(offset)
         self.last_threat_status_change = FiletimeEntry(fh)
@@ -111,7 +104,6 @@ class WDDHMetadata(WDDHPart):
 
 class WDDHOptionalSection(WDDHPart):
     def __init__(self, fh: BinaryIO, offset: int = 0):
-        fh = fh
         if offset:
             fh.seek(offset)
         raise NotImplementedError()

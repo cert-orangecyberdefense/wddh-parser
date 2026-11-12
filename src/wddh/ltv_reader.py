@@ -9,7 +9,7 @@ import logging
 import struct
 import uuid
 from enum import Enum
-from typing import BinaryIO, Optional, Any
+from typing import Any, BinaryIO
 
 from wddh.utils import windows_timestamp_to_datetime
 
@@ -56,8 +56,8 @@ class LTVEntry:
     def __init__(
         self,
         fh: BinaryIO,
-        expected_type: Optional[TLVTypeEnum] = None,
-        expected_len: Optional[int] = None,
+        expected_type: TLVTypeEnum | None = None,
+        expected_len: int | None = None,
     ):
         """
         Create a TLV entry from a BinaryIO stream
@@ -128,8 +128,7 @@ class WStrEntry(LTVEntry):
         super().__init__(fh, expected_type=TLVTypeEnum.WSTRING)
 
         self.as_str = self.raw_data.decode("utf16", errors=errors)
-        if self.as_str.endswith("\x00"):
-            self.as_str = self.as_str[:-1]
+        self.as_str = self.as_str.removesuffix("\x00")
 
 
 class FiletimeEntry(LTVEntry):
